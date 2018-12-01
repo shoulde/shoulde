@@ -27,7 +27,7 @@ jobs:
           - v1-dependencies-
 
       - run: npm install
-      - run: expo start
+      - run: npm start
 
       - save_cache:
           paths:
