@@ -1,6 +1,7 @@
 {
   "expo": {
-    "name": "shoulde",
+    "name": "shade",
+    "displayName": "shade",
     "slug": "shoulde",
     "privacy": "public",
     "sdkVersion": "31.0.0",
