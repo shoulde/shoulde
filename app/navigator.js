@@ -1,63 +1,46 @@
 import {
-    createSwitchNavigator,
-    createStackNavigator,
-    createAppContainer,
-    createBottomTabNavigator
+  createSwitchNavigator,
+  createStackNavigator,
+  createAppContainer,
+  createBottomTabNavigator,
 } from 'react-navigation';
-import HomeScreen from "./views/Home"
-import SignInScreen from "./views/Signin"
-import AuthLoadingScreen from "./views/Authloading"
-import ProfilScreen from "./views/Profil"
+import HomeScreen from './views/Home';
+import SignInScreen from './views/LoginScreens/Signin';
+import AuthLoadingScreen from './views/LoginScreens/Authloading';
+import ProfilScreen from './views/Profil';
 import CategoryScreen from './views/Category';
 
 
-
-
-
 const AuthStack = createStackNavigator({
-    SignIn: SignInScreen
+  SignIn: SignInScreen,
 }, { headerMode: 'none' });
 
-/**
- * TabBottomNavigator contains
- * 
- *  - Flow page
- *  - Take Picture Page
- *  - Profil Page 
- * 
- */
 const TabNavigator = createBottomTabNavigator({
-    Home: HomeScreen,
-    Profil: ProfilScreen,
+  Home: HomeScreen,
+  Profil: ProfilScreen,
 }, { headerMode: 'none' });
 
-/**
- * First screen contains
- * 
- *  - Flow
- *  - Catgeory
- */
 const HomeStack = createStackNavigator({
-    Home: TabNavigator,
-    Category: CategoryScreen
+  Home: TabNavigator,
+  Category: CategoryScreen,
 }, { headerMode: 'none' });
-
-
 
 
 const tabStack = createStackNavigator({
-    mainContent: HomeStack
+  mainContent: HomeStack,
 }, { headerMode: 'none' });
 
 
-export default FirstAppContainer = createAppContainer(createSwitchNavigator({
-    AuthLoading: AuthLoadingScreen,
-    App: tabStack,
-    Auth: AuthStack,
+const FirstAppContainer = createAppContainer(createSwitchNavigator({
+  AuthLoading: AuthLoadingScreen,
+  App: tabStack,
+  Auth: AuthStack,
 }, {
-    headerMode: 'none',
-    navigationOptions: {
-        headerVisible: false,
-    },
-    initialRouteName: 'AuthLoading'
+  headerMode: 'none',
+  navigationOptions: {
+    headerVisible: false,
+  },
+  initialRouteName: 'AuthLoading',
 }));
+
+export default FirstAppContainer;
