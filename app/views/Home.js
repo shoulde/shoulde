@@ -7,25 +7,6 @@ import {
   View,
 } from 'react-native';
 
-export default class HomeScreen extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Welcome to the jugnle bro</Text>
-        <Button onPress={this._showMoreApp} title="check my pleasure !" />
-      </View>
-    );
-  }
-
-    _showMoreApp = () => {
-      this.props.navigation.navigate('Category');
-    };
-
-    _signOutAsync = async () => {
-      await AsyncStorage.clear();
-      this.props.navigation.navigate('Auth');
-    };
-}
 
 const styles = StyleSheet.create({
   container: {
@@ -34,3 +15,27 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default class HomeScreen extends React.Component {
+
+  showMoreApp = () => {
+    const { navigation } = this.props;
+    navigation.navigate('Category');
+  };
+
+  _signOutAsync = async () => {
+    await AsyncStorage.clear();
+    const { navigation } = this.props;
+    navigation.navigate('Auth');
+  };
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text>Welcome to the jugnle bro</Text>
+        <Button onPress={this.showMoreApp} title="check my pleasure !" />
+      </View>
+    );
+  }
+  
+}

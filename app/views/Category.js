@@ -1,34 +1,10 @@
 import React from 'react';
 import {
-  AsyncStorage,
   Button,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-
-export default class CategoryScreen extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-    static navigationOptions = {
-      title: 'choose cat',
-    };
-
-    _signOutAsync = () => {
-      this.props.navigation.goBack();
-    }
-
-    render() {
-      return (
-        <View style={styles.container}>
-          <Text>no !</Text>
-          <Button title="return" onPress={this._signOutAsync} />
-        </View>
-      );
-    }
-}
 
 const styles = StyleSheet.create({
   container: {
@@ -37,3 +13,24 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default class CategoryScreen extends React.Component {
+
+    static navigationOptions = {
+      title: 'choose cat',
+    };
+
+    signOutAsync = () => {
+      const { navigation } = this.props;
+      navigation.goBack();
+    }
+
+    render() {
+      return (
+        <View style={styles.container}>
+          <Text>no !</Text>
+          <Button title="return" onPress={this.signOutAsync} />
+        </View>
+      );
+    }
+}

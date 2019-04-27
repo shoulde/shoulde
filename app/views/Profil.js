@@ -6,21 +6,6 @@ import {
   View,
 } from 'react-native';
 
-export default class ProfilScreen extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Button title="Actually, sign me out :)" onPress={this._signOutAsync} />
-      </View>
-    );
-  }
-
-    _signOutAsync = async () => {
-      await AsyncStorage.clear();
-      this.props.navigation.navigate('Auth');
-    };
-}
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -28,3 +13,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default class ProfilScreen extends React.Component {
+
+  signOutAsync = async () => {
+    await AsyncStorage.clear();
+    const { navigation } = this.props;
+    navigation.navigate('Auth');
+  };
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Button title="Actually, sign me out :)" onPress={this.signOutAsync} />
+      </View>
+    );
+  }
+}

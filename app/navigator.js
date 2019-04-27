@@ -37,9 +37,6 @@ const FirstAppContainer = createAppContainer(createSwitchNavigator({
   Auth: AuthStack,
 }, {
   headerMode: 'none',
-  navigationOptions: {
-    headerVisible: false,
-  },
   initialRouteName: 'AuthLoading',
 }));
 
